@@ -46,3 +46,47 @@ input[type="text"] {
 .form-group {
   margin-bottom: 1rem;
 }
+
+.app {
+  height: 100vh;
+  display: flex;
+  background-color: #020230;
+  color: white;
+}
+.container {
+  width: 75%;
+  background: url("./assets/QuestionRoom.jpg") center;
+}
+.pyramid-container {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.money-container {
+  width: 100%;
+}
+.money-list {
+  width: 100%;
+  padding: 20px;
+  list-style: none;
+}
+.money-item {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+.money-item.active {
+  background-color: green;
+}
+
+.number {
+  font-size: 18px;
+  font-weight: 100;
+  width: 30%;
+}
+.amount {
+  font-size: 20px;
+  font-weight: 300;
+}
