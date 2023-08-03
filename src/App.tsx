@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { moneyList, questionList } from "./utils/db";
 import MoneyList from "./components/Money/MoneyList";
 import Questions from "./components/Questions/Questions";
@@ -8,11 +8,18 @@ function App() {
   const [stop, setStop] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
 
+  useEffect(() => {
+    const lastCorrectAnswer = moneyList.find(
+      (money) => money.id === questionNumber - 1
+    );
+    questionNumber > 1 && setTotalAmount(lastCorrectAnswer?.amount || 0);
+  }, [questionNumber]);
+
   return (
     <div className="app">
       <div className="container">
         {stop ? (
-          <h1 className="total-amount">Total Amount Earned: {totalAmount}</h1>
+          <h1 className="total-amount">Total Amount Earned: ${totalAmount}</h1>
         ) : (
           <Fragment>
             <div className="timer-container">
