@@ -5,7 +5,7 @@ import Questions from "./components/Questions/Questions";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [timeout, setTimeout] = useState(1);
+  const [timeout, setTimeOut] = useState(1);
 
   return (
     <div className="app">
@@ -17,7 +17,7 @@ function App() {
           <Questions
             questionNumber={questionNumber}
             questionList={questionList}
-            setTimeout={setTimeout}
+            setTimeOut={setTimeOut}
             setQuestionNumber={setQuestionNumber}
           />
         </div>
