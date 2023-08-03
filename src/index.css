@@ -59,6 +59,9 @@ input[type="text"] {
     url("./assets/QuestionRoom.jpg") center;
   display: flex;
   flex-direction: column;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .timer-container {
   height: 50%;
@@ -98,7 +101,7 @@ input[type="text"] {
 .money-item {
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 15px;
   border-radius: 5px;
 }
 .money-item.active {
@@ -106,13 +109,13 @@ input[type="text"] {
 }
 
 .number {
-  font-size: 18px;
-  font-weight: 100;
+  font-size: 20px;
+  font-weight: 500;
   width: 30%;
 }
 .amount {
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 21px;
+  font-weight: 500;
 }
 
 .question-answer {
@@ -198,4 +201,42 @@ input[type="text"] {
   left: 0;
   right: 0;
   margin: auto;
+}
+
+.start {
+  width: 250px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.startInput {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.startInput:focus {
+  outline: none;
+}
+
+.startButton {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
 }
