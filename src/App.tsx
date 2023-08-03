@@ -2,11 +2,13 @@ import { Fragment, useEffect, useState } from "react";
 import { moneyList, questionList } from "./utils/db";
 import MoneyList from "./components/Money/MoneyList";
 import Questions from "./components/Questions/Questions";
+import QuestionTimer from "./components/Questions/QuestionTimer";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [stop, setStop] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [timeOut, setTimeOut] = useState(false);
 
   useEffect(() => {
     const lastCorrectAnswer = moneyList.find(
@@ -23,7 +25,10 @@ function App() {
         ) : (
           <Fragment>
             <div className="timer-container">
-              <div className="timer">30</div>
+              <QuestionTimer
+                questionNumber={questionNumber}
+                setStop={setStop}
+              />
             </div>
             <div className="bottom-container">
               <Questions
