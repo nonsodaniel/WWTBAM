@@ -1,14 +1,31 @@
-import React from "react";
+import { Fragment, useEffect, useState } from "react";
 
-const Questions = () => {
+interface IQuestionsProps {
+  questionNumber: number;
+  questionList: any;
+  setTimeout: any;
+  setQuestionNumber: any;
+}
+
+const Questions = ({
+  questionList,
+  setTimeout,
+  setQuestionNumber,
+  questionNumber,
+}: IQuestionsProps) => {
+  const [question, setQuestion] = useState<any>(null);
+  useEffect(() => {
+    setQuestion(questionList[questionNumber - 1]);
+  }, [questionList, questionNumber]);
   return (
     <div className="question-answer">
-      <div className="question">What is your name?</div>
+      <div className="question">{question?.question}?</div>
       <div className="answers">
-        <div className="answer correct">Nonso</div>
-        <div className="answer wrong">Daniel</div>
-        <div className="answer">David</div>
-        <div className="answer">Others</div>
+        {question?.answers?.map((answer: any) => (
+          <Fragment key={answer.text}>
+            <div className={`answer ${answer.correct}`}>{answer.text}</div>
+          </Fragment>
+        ))}
       </div>
     </div>
   );

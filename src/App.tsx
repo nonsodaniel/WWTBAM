@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { moneyList } from "./utils/db";
+import { moneyList, questionList } from "./utils/db";
 import MoneyList from "./components/Money/MoneyList";
 import Questions from "./components/Questions/Questions";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
+  const [timeout, setTimeout] = useState(1);
 
   return (
     <div className="app">
@@ -13,7 +14,12 @@ function App() {
           <div className="timer">30</div>
         </div>
         <div className="bottom-container">
-          <Questions />
+          <Questions
+            questionNumber={questionNumber}
+            questionList={questionList}
+            setTimeout={setTimeout}
+            setQuestionNumber={setQuestionNumber}
+          />
         </div>
       </div>
       <div className="pyramid-container">
