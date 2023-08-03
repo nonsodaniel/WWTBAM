@@ -3,13 +3,13 @@ import { Fragment, useEffect, useState } from "react";
 interface IQuestionsProps {
   questionNumber: number;
   questionList: any;
-  setTimeOut: any;
+  setStop: any;
   setQuestionNumber: any;
 }
 
 const Questions = ({
   questionList,
-  setTimeOut,
+  setStop,
   setQuestionNumber,
   questionNumber,
 }: IQuestionsProps) => {
@@ -19,13 +19,33 @@ const Questions = ({
   useEffect(() => {
     setQuestion(questionList[questionNumber - 1]);
   }, [questionList, questionNumber]);
-  const handleClick = (answer: any) => {
-    setSelectedAnswer(answer);
-    setClassName("answer active");
+  const setDelay = (duration: any, callback: any) => {
     setTimeout(() => {
-      setClassName(answer.correct ? "correct answer" : "wrong answer");
-    }, 3000);
+      callback();
+    }, duration);
   };
+
+  const handleClick = (a: any) => {
+    setSelectedAnswer(a);
+    setClassName("answer active");
+    setDelay(3000, () => {
+      setClassName(a.correct ? "answer correct" : "answer wrong");
+    });
+
+    setDelay(5000, () => {
+      if (a.correct) {
+        setDelay(1000, () => {
+          setQuestionNumber((prev: any) => prev + 1);
+          setSelectedAnswer(null);
+        });
+      } else {
+        setDelay(1000, () => {
+          setStop(true);
+        });
+      }
+    });
+  };
+
   return (
     <div className="question-answer">
       <div className="question">{question?.question}?</div>
